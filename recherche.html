@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recherche d'Émojis - Défi Ymoji</title>
+  <style>
+    /* Style général */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background-color: #333;
+      padding: 20px;
+      color: white;
+      font-size: 2rem;
+    }
+
+    .search-container {
+      margin: 50px 0;
+    }
+
+    input[type="text"] {
+      width: 300px;
+      padding: 10px;
+      font-size: 1.2rem;
+      border: 2px solid #00b4d8;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      background-color: #00b4d8;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    button:hover {
+      background-color: #007b8f;
+    }
+
+    #results {
+      margin-top: 30px;
+      font-size: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .emoji {
+      margin: 10px;
+      padding: 10px;
+      font-size: 3rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- En-tête -->
+  <header>
+    🔍 Recherche d'Émojis
+  </header>
+
+  <!-- Conteneur de recherche -->
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Entrez un mot-clé...">
+    <button onclick="searchEmoji()">Rechercher</button>
+  </div>
+
+
+  <!-- Résultats de recherche -->
+  <div id="results"></div>
+  <a href="index.html" class="back-button">Retour à l'Accueil</a>
+</div>
+  <!-- JavaScript -->
+  <script>
+    // Exemple de base de données d'émojis (vous pouvez l'étendre)
+    const emojiDatabase = [
+      { keyword: "bonjour", emoji: "👋" },
+      { keyword: "amour", emoji: "❤️" },
+      { keyword: "soleil", emoji: "☀️" },
+      { keyword: "heureux", emoji: "😊" },
+      { keyword: "triste", emoji: "😢" },
+      { keyword: "étoile", emoji: "⭐" },
+      { keyword: "fleur", emoji: "🌸" },
+      { keyword: "maison", emoji: "🏠" },
+      { keyword: "livre", emoji: "📚" },
+      { keyword: "musique", emoji: "🎵" }
+    ];
+    
+
+    function searchEmoji() {
+      const query = document.getElementById("searchInput").value.trim().toLowerCase();
+      const resultsContainer = document.getElementById("results");
+
+      // Effacer les résultats précédents
+      resultsContainer.innerHTML = "";
+
+      // Vérifier si l'entrée est vide
+      if (query === "") {
+        resultsContainer.innerHTML = "<p style='color: red;'>Veuillez entrer un mot-clé.</p>";
+        return;
+      }
+
+      // Filtrer les émojis correspondants
+      const filteredEmojis = emojiDatabase.filter(item => item.keyword.includes(query));
+
+      // Afficher les résultats
+      if (filteredEmojis.length > 0) {
+        filteredEmojis.forEach(item => {
+          const emojiDiv = document.createElement("div");
+          emojiDiv.className = "emoji";
+          emojiDiv.textContent = item.emoji;
+          resultsContainer.appendChild(emojiDiv);
+        });
+      } else {
+        resultsContainer.innerHTML = "<p>Aucun émoji trouvé pour : <strong>" + query + "</strong></p>";
+      }
+    }
+  </script>
+
+</body>
+</html>

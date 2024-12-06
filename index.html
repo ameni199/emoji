@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Défi Ymoji</title>
+  <style>
+    /* Style général */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to right, #00b4d8, #90e0ef); /* Dégradé du bleu au bleu clair */
+      padding: 20px;
+      margin: 0;
+      height: 100vh; /* Occuper toute la hauteur de l'écran */
+    }
+
+    h2 {
+      color: #333;
+      font-size: 3rem;
+      margin-top: 50px;
+    }
+
+    /* Navigation avec émojis */
+    .nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 20px;
+    }
+
+    .nav-item {
+      font-size: 40px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .nav-item:hover {
+      transform: scale(1.2);
+    }
+
+    /* Zone du traducteur */
+    .translator-container {
+      margin-top: 40px;
+    }
+
+    #textInput {
+      font-size: 18px;
+      padding: 10px;
+      width: 300px;
+      margin-top: 10px;
+    }
+
+    #emojiOutput {
+      font-size: 30px;
+      margin-top: 20px;
+    }
+
+    /* Animation avec émoji */
+    .emoji {
+      font-size: 50px;
+      animation: move 2s infinite alternate;
+    }
+
+    @keyframes move {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-50px);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <h2>Bienvenue dans le défi Ymoji !</h2>
+
+  <!-- Navigation avec émojis -->
+  <div class="nav">
+    <a href="index.html" class="nav-item" title="Accueil">🏠</a>
+    <a href="recherche.html" class="nav-item" title="Recherche">🔍</a>
+    <a href="parametres.html" class="nav-item" title="Paramètres">⚙️</a>
+  </div>
+
+  
+
+  <!-- Traducteur de texte en émojis -->
+  <div class="translator-container">
+    <h3>Traducteur de texte en émojis</h3>
+    <input type="text" id="textInput" placeholder="Entrez du texte..." />
+    <button onclick="translateToEmoji()">Traduire</button>
+    <div id="emojiOutput"></div>
+  </div>
+
+  <!-- Animation avec un émoji -->
+  <div class="emoji">🎉</div>
+
+  <script>
+    // Fonction pour traduire le texte en émojis
+    function translateToEmoji() {
+      const text = document.getElementById("textInput").value.toLowerCase();
+      let emojiTranslation = "";
+
+      // Traduction basique
+      if (text.includes("heureux")) {
+        emojiTranslation += "😊 ";
+      }
+      if (text.includes("triste")) {
+        emojiTranslation += "😢 ";
+      }
+      if (text.includes("amour")) {
+        emojiTranslation += "❤️ ";
+      }
+      if (text.includes("bonjour")) {
+        emojiTranslation += "👋 ";
+      }
+      if (text.includes("travail")) {
+    emojiTranslation += "💼 ";
+  }
+       if (text.includes("voyage")) {
+    emojiTranslation += "✈️ ";
+  }
+  if (text.includes("musique")) {
+    emojiTranslation += "🎶 ";
+  }
+  if (text.includes("chien")) {
+    emojiTranslation += "🐶 ";
+  }
+  if (text.includes("chat")) {
+    emojiTranslation += "🐱 ";
+  }
+  if (text.includes("nuit")) {
+    emojiTranslation += "🌙 ";
+  }
+  if (text.includes("été")) {
+    emojiTranslation += "☀️ ";
+  }
+      // Afficher les émojis traduits
+      document.getElementById("emojiOutput").innerText = emojiTranslation || "Aucun émoji trouvé pour ce texte.";
+    }
+  </script>
+
+</body>
+</html>
+
+
